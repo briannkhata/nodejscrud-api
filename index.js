@@ -2,9 +2,9 @@ const mysql = require('mysql');
 const express = require('express');
 var app = express();
 const bodyparser = require('body-parser');
-const req = require('express/lib/request');
+//const req = require('express/lib/request');
 
-app.use(bodyparser.json);
+app.use(bodyparser.json());
 
 var mysqlConnection  = mysql.createConnection({
     host : 'localhost',
@@ -21,7 +21,7 @@ mysqlConnection.connect((err) =>{
         console.log('DB connection failed \n Error : ' + JSON.stringify(err,undefined,2));
 });
 
-app.listen(5000,() =>console.log("Express server is running at port no : 5000"));
+app.listen(5000,() =>console.log("Server is running at port no : 5000"));
 
 //get all employees
 app.get('/employees',(req,res)=>{
